@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network Topologies — Professional Presentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- SLIDE COUNTER -->
+  <div class="slide-counter" id="slideCounter">1 / 10</div>
+
+  <!-- PRESENTATION WRAPPER -->
+  <div class="presentation" id="presentation">
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 1 — TITLE
+    ══════════════════════════════════════════ -->
+    <section class="slide slide-title active" id="slide-1">
+      <div class="slide-bg-grid"></div>
+      <div class="title-content">
+        <div class="badge animate-in" style="--delay:0.1s">Computer Networks</div>
+        <h1 class="animate-in" style="--delay:0.25s">Network<br><span class="accent">Topologies</span></h1>
+        <p class="subtitle animate-in" style="--delay:0.4s">
+          Understanding Bus &amp; Star Topology<br>with Real-World Examples
+        </p>
+        <div class="divider animate-in" style="--delay:0.55s"></div>
+        <p class="meta animate-in" style="--delay:0.7s">Interactive Presentation · HTML / CSS / JS</p>
+        <div class="nav-hint animate-in" style="--delay:0.9s">
+          <span>Press</span>
+          <kbd>→</kbd>
+          <span>or click</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <span>to begin</span>
+        </div>
+      </div>
+      <div class="title-visual animate-in" style="--delay:0.3s">
+        <svg viewBox="0 0 300 300" width="320" height="320" class="hero-svg">
+          <!-- Star topology mini preview -->
+          <circle cx="150" cy="150" r="30" fill="#6366f1" opacity="0.9"/>
+          <text x="150" y="155" text-anchor="middle" fill="white" font-size="10" font-family="Inter">HUB</text>
+          <g class="hero-nodes">
+            <line x1="150" y1="150" x2="150" y2="60" stroke="#818cf8" stroke-width="2" stroke-dasharray="4 2"/>
+            <circle cx="150" cy="55" r="16" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+            <text x="150" y="60" text-anchor="middle" fill="#c7d2fe" font-size="8">PC1</text>
+
+            <line x1="150" y1="150" x2="240" y2="100" stroke="#818cf8" stroke-width="2" stroke-dasharray="4 2"/>
+            <circle cx="245" cy="95" r="16" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+            <text x="245" y="100" text-anchor="middle" fill="#c7d2fe" font-size="8">PC2</text>
+
+            <line x1="150" y1="150" x2="240" y2="210" stroke="#818cf8" stroke-width="2" stroke-dasharray="4 2"/>
+            <circle cx="245" cy="215" r="16" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+            <text x="245" y="220" text-anchor="middle" fill="#c7d2fe" font-size="8">PC3</text>
+
+            <line x1="150" y1="150" x2="60" y2="210" stroke="#818cf8" stroke-width="2" stroke-dasharray="4 2"/>
+            <circle cx="55" cy="215" r="16" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+            <text x="55" y="220" text-anchor="middle" fill="#c7d2fe" font-size="8">PC4</text>
+
+            <line x1="150" y1="150" x2="60" y2="100" stroke="#818cf8" stroke-width="2" stroke-dasharray="4 2"/>
+            <circle cx="55" cy="95" r="16" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+            <text x="55" y="100" text-anchor="middle" fill="#c7d2fe" font-size="8">PC5</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 2 — AGENDA
+    ══════════════════════════════════════════ -->
+    <section class="slide slide-agenda" id="slide-2">
+      <div class="slide-header">
+        <span class="slide-label">Agenda</span>
+      </div>
+      <div class="slide-body">
+        <h2 class="animate-in" style="--delay:0.1s">What We'll Cover</h2>
+        <div class="agenda-grid">
+          <div class="agenda-card animate-in" style="--delay:0.15s">
+            <div class="agenda-num">01</div>
+            <div>
+              <strong>Network Topologies</strong>
+              <p>Introduction &amp; Overview</p>
+            </div>
+          </div>
+          <div class="agenda-card animate-in" style="--delay:0.25s">
+            <div class="agenda-num bus">02</div>
+            <div>
+              <strong>Bus Topology</strong>
+              <p>Diagram · Pros/Cons · Real-Life</p>
+            </div>
+          </div>
+          <div class="agenda-card animate-in" style="--delay:0.35s">
+            <div class="agenda-num star">03</div>
+            <div>
+              <strong>Star Topology</strong>
+              <p>Diagram · Pros/Cons · Real-Life</p>
+            </div>
+          </div>
+          <div class="agenda-card animate-in" style="--delay:0.45s">
+            <div class="agenda-num compare">04</div>
+            <div>
+              <strong>Comparison</strong>
+              <p>Side-by-side Analysis</p>
+            </div>
+          </div>
+          <div class="agenda-card animate-in" style="--delay:0.55s">
+            <div class="agenda-num conclude">05</div>
+            <div>
+              <strong>Conclusion</strong>
+              <p>Key Takeaways</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 3 — INTRO TO TOPOLOGIES
+    ══════════════════════════════════════════ -->
+    <section class="slide slide-intro" id="slide-3">
+      <div class="slide-header">
+        <span class="slide-label">Introduction</span>
+      </div>
+      <div class="slide-body two-col">
+        <div class="col-text">
+          <h2 class="animate-in" style="--delay:0.1s">What is a<br><span class="accent">Network Topology?</span></h2>
+          <p class="animate-in" style="--delay:0.25s">
+            A <strong>network topology</strong> defines the physical or logical arrangement of devices (nodes) and the connections between them in a computer network.
+          </p>
+          <ul class="feature-list animate-in" style="--delay:0.35s">
+            <li><span class="icon">🔗</span> Determines how data travels through the network</li>
+            <li><span class="icon">⚡</span> Affects performance, reliability &amp; cost</li>
+            <li><span class="icon">🛠️</span> Influences fault tolerance &amp; scalability</li>
+            <li><span class="icon">📐</span> Guides physical cabling and layout</li>
+          </ul>
+        </div>
+        <div class="col-visual animate-in" style="--delay:0.2s">
+          <div class="topology-types">
+            <div class="ttype active-type">Bus</div>
+            <div class="ttype">Star</div>
+            <div class="ttype muted">Ring</div>
+            <div class="ttype muted">Mesh</div>
+            <div class="ttype muted">Tree</div>
+          </div>
+          <p class="type-note">We'll focus on Bus &amp; Star</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 4 — BUS TOPOLOGY OVERVIEW
+    ══════════════════════════════════════════ -->
+    <section class="slide slide-bus" id="slide-4">
+      <div class="slide-header bus-header">
+        <span class="slide-label">Bus Topology</span>
+      </div>
+      <div class="slide-body two-col">
+        <div class="col-text">
+          <h2 class="animate-in" style="--delay:0.1s"><span class="bus-accent">Bus</span> Topology</h2>
+          <p class="animate-in" style="--delay:0.2s">
+            All devices share a <strong>single communication line</strong> called the "bus." Data sent by any device travels in both directions along the bus and is received by all connected devices.
+          </p>
+          <div class="info-box animate-in" style="--delay:0.3s">
+            <div class="info-item"><span class="label">Cable:</span> Coaxial / Twisted Pair</div>
+            <div class="info-item"><span class="label">Protocol:</span> CSMA/CD (Ethernet)</div>
+            <div class="info-item"><span class="label">Era:</span> Early LANs (1980s–90s)</div>
+          </div>
+        </div>
+        <div class="col-visual animate-in" style="--delay:0.15s">
+          <!-- BUS TOPOLOGY SVG DIAGRAM -->
+          <div class="diagram-container" id="busDiagram">
+            <svg viewBox="0 0 520 240" width="100%" class="topology-svg" id="busSvg">
+              <!-- Terminators -->
+              <rect x="8" y="108" width="20" height="24" rx="4" fill="#f59e0b" stroke="#d97706" stroke-width="2" class="terminator"/>
+              <text x="18" y="142" text-anchor="middle" fill="#fef3c7" font-size="9" font-family="Inter">T</text>
+              <rect x="492" y="108" width="20" height="24" rx="4" fill="#f59e0b" stroke="#d97706" stroke-width="2" class="terminator"/>
+              <text x="502" y="142" text-anchor="middle" fill="#fef3c7" font-size="9" font-family="Inter">T</text>
+
+              <!-- Bus line -->
+              <line x1="28" y1="120" x2="492" y2="120" stroke="#6366f1" stroke-width="4" stroke-linecap="round"/>
+
+              <!-- Signal pulse animation -->
+              <circle r="5" fill="#a5b4fc" opacity="0.9" class="signal-pulse">
+                <animateMotion dur="2s" repeatCount="indefinite" path="M28,120 L492,120"/>
+              </circle>
+              <circle r="5" fill="#a5b4fc" opacity="0.6" class="signal-pulse">
+                <animateMotion dur="2s" repeatCount="indefinite" begin="1s" path="M492,120 L28,120"/>
+              </circle>
+
+              <!-- Vertical connectors + Nodes -->
+              <!-- Node 1 -->
+              <line x1="100" y1="120" x2="100" y2="75" stroke="#6366f1" stroke-width="2"/>
+              <g class="bus-node" data-label="Computer 1" transform="translate(100,55)">
+                <rect x="-28" y="-20" width="56" height="34" rx="5" fill="#1e1b4b" stroke="#6366f1" stroke-width="2" class="node-rect"/>
+                <text y="-4" text-anchor="middle" fill="#c7d2fe" font-size="9" font-family="Inter">💻</text>
+                <text y="8" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="Inter">PC 1</text>
+                <title>Computer 1</title>
+              </g>
+
+              <!-- Node 2 -->
+              <line x1="200" y1="120" x2="200" y2="75" stroke="#6366f1" stroke-width="2"/>
+              <g class="bus-node" data-label="Computer 2" transform="translate(200,55)">
+                <rect x="-28" y="-20" width="56" height="34" rx="5" fill="#1e1b4b" stroke="#6366f1" stroke-width="2" class="node-rect"/>
+                <text y="-4" text-anchor="middle" fill="#c7d2fe" font-size="9" font-family="Inter">💻</text>
+                <text y="8" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="Inter">PC 2</text>
+                <title>Computer 2</title>
+              </g>
+
+              <!-- Node 3 — Server (below bus) -->
+              <line x1="300" y1="120" x2="300" y2="165" stroke="#6366f1" stroke-width="2"/>
+              <g class="bus-node" data-label="Server" transform="translate(300,185)">
+                <rect x="-28" y="-20" width="56" height="34" rx="5" fill="#1e1b4b" stroke="#f59e0b" stroke-width="2" class="node-rect"/>
+                <text y="-4" text-anchor="middle" fill="#fde68a" font-size="9" font-family="Inter">🖥️</text>
+                <text y="8" text-anchor="middle" fill="#fde68a" font-size="8" font-family="Inter">Server</text>
+                <title>Server</title>
+              </g>
+
+              <!-- Node 4 -->
+              <line x1="390" y1="120" x2="390" y2="75" stroke="#6366f1" stroke-width="2"/>
+              <g class="bus-node" data-label="Computer 3" transform="translate(390,55)">
+                <rect x="-28" y="-20" width="56" height="34" rx="5" fill="#1e1b4b" stroke="#6366f1" stroke-width="2" class="node-rect"/>
+                <text y="-4" text-anchor="middle" fill="#c7d2fe" font-size="9" font-family="Inter">💻</text>
+                <text y="8" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="Inter">PC 3</text>
+                <title>Computer 3</title>
+              </g>
+
+              <!-- Tooltip -->
+              <g id="busTooltip" style="display:none">
+                <rect x="0" y="0" width="100" height="24" rx="6" fill="#312e81" stroke="#6366f1"/>
+                <text x="50" y="16" text-anchor="middle" fill="white" font-size="10" font-family="Inter" id="busTooltipText"></text>
+              </g>
+            </svg>
+            <p class="diagram-caption">Hover over devices to interact · Signal pulses along the shared bus</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 5 — BUS PROS/CONS
+    ══════════════════════════════════════════ -->
+    <section class="slide slide-pros-cons" id="slide-5">
+      <div class="slide-header bus-header">
+        <span class="slide-label">Bus Topology · Advantages &amp; Disadvantages</span>
+      </div>
+      <div class="slide-body">
+        <h2 class="animate-in" style="--delay:0.1s"><span class="bus-accent">Bus</span> Topology — Pros &amp; Cons</h2>
+        <div class="pros-cons-grid">
+          <div class="pros-col animate-in" style="--delay:0.2s">
+            <h3 class="pros-title">✅ Advantages</h3>
+            <ul class="pros-list">
+              <li><strong>Low Cost</strong> — Less cable needed than other topologies; minimal hardware required</li>
+              <li><strong>Easy Installation</strong> — Simple to set up for small networks; straightforward cabling</li>
+              <li><strong>Works Well for Small Networks</strong> — Sufficient for small offices or labs with few devices</li>
+              <li><strong>Easy to Extend</strong> — New devices can be added by attaching to the bus</li>
+            </ul>
+          </div>
+          <div class="cons-col animate-in" style="--delay:0.3s">
+            <h3 class="cons-title">❌ Disadvantages</h3>
+            <ul class="cons-list">
+              <li><strong>Single Point of Failure</strong> — If the main cable breaks, the entire network goes down</li>
+              <li><strong>Performance Degrades</strong> — Heavy traffic causes collisions; speed drops with more devices</li>
+              <li><strong>Difficult Troubleshooting</strong> — Hard to isolate faults; entire cable must be checked</li>
+              <li><strong>Limited Scalability</strong> — Not suitable for large or growing networks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 6 — BUS REAL-LIFE EXAMPLES
+    ══════════════════════════════════════════ -->
+    <section class="slide slide-examples" id="slide-6">
+      <div class="slide-header bus-header">
+        <span class="slide-label">Bus Topology · Real-Life Examples</span>
+      </div>
+      <div class="slide-body">
+        <h2 class="animate-in" style="--delay:0.1s"><span class="bus-accent">Bus</span> Topology in Real Life</h2>
+        <div class="examples-grid">
+          <div class="example-card animate-in" style="--delay:0.2s">
+            <div class="example-icon">
+              <svg viewBox="0 0 60 60" width="60" height="60">
+                <rect x="5" y="15" width="50" height="30" rx="5" fill="#312e81" stroke="#6366f1" stroke-width="2"/>
+                <circle cx="15" cy="30" r="5" fill="#6366f1"/>
+                <circle cx="30" cy="30" r="5" fill="#6366f1"/>
+                <circle cx="45" cy="30" r="5" fill="#6366f1"/>
+                <line x1="5" y1="30" x2="55" y2="30" stroke="#a5b4fc" stroke-width="1.5" stroke-dasharray="3 2"/>
+              </svg>
+            </div>
+            <h4>10Base2 Ethernet (Thinnet)</h4>
+            <p>Early office LANs (1980s–90s) used coaxial cable as a shared bus. All computers connected to a single cable using BNC T-connectors — a classic Bus topology implementation.</p>
+            <div class="example-tag">🏢 Early Office LAN</div>
+          </div>
+
+          <div class="example-card animate-in" style="--delay:0.3s">
+            <div class="example-icon">
+              <svg viewBox="0 0 60 60" width="60" height="60">
+                <rect x="10" y="20" width="40" height="20" rx="3" fill="#1e3a5f" stroke="#f59e0b" stroke-width="2"/>
+                <circle cx="18" cy="30" r="4" fill="#f59e0b"/>
+                <circle cx="30" cy="30" r="4" fill="#f59e0b"/>
+                <circle cx="42" cy="30" r="4" fill="#f59e0b"/>
+                <rect x="25" y="38" width="10" height="5" rx="1" fill="#f59e0b" opacity="0.6"/>
+                <path d="M5 30 Q10 22 15 30 Q20 38 25 30" stroke="#f59e0b" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+            <h4>CAN Bus in Vehicles</h4>
+            <p>Modern cars use a Controller Area Network (CAN Bus) where engine control units (ECUs), ABS, airbags, and sensors all share one communication line — exactly like Bus topology.</p>
+            <div class="example-tag">🚗 Automotive Systems</div>
+          </div>
+
+          <div class="example-card animate-in" style="--delay:0.4s">
+            <div class="example-icon">
+              <svg viewBox="0 0 60 60" width="60" height="60">
+                <rect x="5" y="25" width="50" height="10" rx="3" fill="#1e3a5f" stroke="#10b981" stroke-width="2"/>
+                <rect x="10" y="10" width="12" height="15" rx="2" fill="#065f46" stroke="#10b981" stroke-width="1.5"/>
+                <rect x="24" y="10" width="12" height="15" rx="2" fill="#065f46" stroke="#10b981" stroke-width="1.5"/>
+                <rect x="38" y="10" width="12" height="15" rx="2" fill="#065f46" stroke="#10b981" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h4>Industrial PLC Networks</h4>
+            <p>Factory automation systems use Modbus or Profibus over a shared bus cable. PLCs, sensors, and actuators communicate over a single line — Bus topology at industrial scale.</p>
+            <div class="example-tag">🏭 Industrial Automation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 7 — STAR TOPOLOGY OVERVIEW
+    ══════════════════════════════════════════ -->
+    <section class="slide slide-star" id="slide-7">
+      <div class="slide-header star-header">
+        <span class="slide-label">Star Topology</span>
+      </div>
+      <div class="slide-body two-col">
+        <div class="col-text">
+          <h2 class="animate-in" style="--delay:0.1s"><span class="star-accent">Star</span> Topology</h2>
+          <p class="animate-in" style="--delay:0.2s">
+            All devices connect to a <strong>central hub or switch</strong>. Communication between devices goes through the central node — no direct device-to-device connection.
+          </p>
+          <div class="info-box star-info animate-in" style="--delay:0.3s">
+            <div class="info-item"><span class="label">Cable:</span> Twisted Pair (UTP/STP)</div>
+            <div class="info-item"><span class="label">Central Node:</span> Hub / Switch / Router</div>
+            <div class="info-item"><span class="label">Standard:</span> IEEE 802.3 (Ethernet)</div>
+          </div>
+        </div>
+        <div class="col-visual animate-in" style="--delay:0.15s">
+          <!-- STAR TOPOLOGY SVG DIAGRAM -->
+          <div class="diagram-container" id="starDiagram">
+            <svg viewBox="0 0 340 300" width="100%" class="topology-svg" id="starSvg">
+              <!-- Connection lines (drawn first so nodes appear on top) -->
+              <line class="star-line" id="sline-1" x1="170" y1="150" x2="170" y2="45" stroke="#10b981" stroke-width="2" stroke-dasharray="5 3"/>
+              <line class="star-line" id="sline-2" x1="170" y1="150" x2="280" y2="88" stroke="#10b981" stroke-width="2" stroke-dasharray="5 3"/>
+              <line class="star-line" id="sline-3" x1="170" y1="150" x2="280" y2="222" stroke="#10b981" stroke-width="2" stroke-dasharray="5 3"/>
+              <line class="star-line" id="sline-4" x1="170" y1="150" x2="170" y2="268" stroke="#10b981" stroke-width="2" stroke-dasharray="5 3"/>
+              <line class="star-line" id="sline-5" x1="170" y1="150" x2="60" y2="222" stroke="#10b981" stroke-width="2" stroke-dasharray="5 3"/>
+              <line class="star-line" id="sline-6" x1="170" y1="150" x2="60" y2="88" stroke="#10b981" stroke-width="2" stroke-dasharray="5 3"/>
+
+              <!-- Central Hub -->
+              <g class="star-hub" id="starHub">
+                <circle cx="170" cy="150" r="30" fill="#064e3b" stroke="#10b981" stroke-width="3"/>
+                <text x="170" y="147" text-anchor="middle" fill="#6ee7b7" font-size="9" font-family="Inter" font-weight="600">SWITCH</text>
+                <text x="170" y="160" text-anchor="middle" fill="#34d399" font-size="8" font-family="Inter">/HUB</text>
+              </g>
+
+              <!-- Peripheral nodes -->
+              <g class="star-node" data-label="Laptop" data-line="sline-1" transform="translate(170,30)">
+                <circle cx="0" cy="0" r="18" fill="#1e1b4b" stroke="#10b981" stroke-width="2" class="snode-circle"/>
+                <text y="-5" text-anchor="middle" fill="#6ee7b7" font-size="10">💻</text>
+                <text y="7" text-anchor="middle" fill="#a7f3d0" font-size="7" font-family="Inter">Laptop</text>
+                <title>Laptop</title>
+              </g>
+
+              <g class="star-node" data-label="PC 1" data-line="sline-2" transform="translate(295,80)">
+                <circle cx="0" cy="0" r="18" fill="#1e1b4b" stroke="#10b981" stroke-width="2" class="snode-circle"/>
+                <text y="-5" text-anchor="middle" fill="#6ee7b7" font-size="10">🖥️</text>
+                <text y="7" text-anchor="middle" fill="#a7f3d0" font-size="7" font-family="Inter">PC 1</text>
+                <title>PC 1</title>
+              </g>
+
+              <g class="star-node" data-label="Printer" data-line="sline-3" transform="translate(295,232)">
+                <circle cx="0" cy="0" r="18" fill="#1e1b4b" stroke="#10b981" stroke-width="2" class="snode-circle"/>
+                <text y="-5" text-anchor="middle" fill="#6ee7b7" font-size="10">🖨️</text>
+                <text y="7" text-anchor="middle" fill="#a7f3d0" font-size="7" font-family="Inter">Printer</text>
+                <title>Printer</title>
+              </g>
+
+              <g class="star-node" data-label="Tablet" data-line="sline-4" transform="translate(170,283)">
+                <circle cx="0" cy="0" r="18" fill="#1e1b4b" stroke="#10b981" stroke-width="2" class="snode-circle"/>
+                <text y="-5" text-anchor="middle" fill="#6ee7b7" font-size="10">📱</text>
+                <text y="7" text-anchor="middle" fill="#a7f3d0" font-size="7" font-family="Inter">Tablet</text>
+                <title>Tablet</title>
+              </g>
+
+              <g class="star-node" data-label="PC 2" data-line="sline-5" transform="translate(45,232)">
+                <circle cx="0" cy="0" r="18" fill="#1e1b4b" stroke="#10b981" stroke-width="2" class="snode-circle"/>
+                <text y="-5" text-anchor="middle" fill="#6ee7b7" font-size="10">🖥️</text>
+                <text y="7" text-anchor="middle" fill="#a7f3d0" font-size="7" font-family="Inter">PC 2</text>
+                <title>PC 2</title>
+              </g>
+
+              <g class="star-node" data-label="Server" data-line="sline-6" transform="translate(45,80)">
+                <circle cx="0" cy="0" r="18" fill="#1e1b4b" stroke="#f59e0b" stroke-width="2" class="snode-circle"/>
+                <text y="-5" text-anchor="middle" fill="#fde68a" font-size="10">🗄️</text>
+                <text y="7" text-anchor="middle" fill="#fde68a" font-size="7" font-family="Inter">Server</text>
+                <title>Server</title>
+              </g>
+
+              <!-- Tooltip -->
+              <g id="starTooltip" style="display:none">
+                <rect x="0" y="0" width="100" height="24" rx="6" fill="#064e3b" stroke="#10b981"/>
+                <text x="50" y="16" text-anchor="middle" fill="white" font-size="10" font-family="Inter" id="starTooltipText"></text>
+              </g>
+            </svg>
+            <p class="diagram-caption">Hover over devices or hub to interact</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 8 — STAR PROS/CONS + REAL-LIFE
+    ══════════════════════════════════════════ -->
+    <section class="slide slide-pros-cons" id="slide-8">
+      <div class="slide-header star-header">
+        <span class="slide-label">Star Topology · Advantages &amp; Disadvantages</span>
+      </div>
+      <div class="slide-body">
+        <h2 class="animate-in" style="--delay:0.1s"><span class="star-accent">Star</span> Topology — Pros &amp; Cons</h2>
+        <div class="pros-cons-grid">
+          <div class="pros-col animate-in" style="--delay:0.2s">
+            <h3 class="pros-title">✅ Advantages</h3>
+            <ul class="pros-list">
+              <li><strong>Fault Tolerant</strong> — One device failure doesn't affect others; easy to isolate problems</li>
+              <li><strong>Easy to Manage</strong> — Central hub makes monitoring, adding &amp; removing devices simple</li>
+              <li><strong>High Performance</strong> — Dedicated lines per device; no collisions (with a switch)</li>
+              <li><strong>Scalable</strong> — Easy to grow the network by adding more devices to the switch</li>
+            </ul>
+          </div>
+          <div class="cons-col animate-in" style="--delay:0.3s">
+            <h3 class="cons-title">❌ Disadvantages</h3>
+            <ul class="cons-list">
+              <li><strong>Central Point of Failure</strong> — If the hub/switch fails, the entire network goes down</li>
+              <li><strong>Higher Cost</strong> — Requires more cable (each device needs its own wire to center)</li>
+              <li><strong>Hub Dependency</strong> — Network performance limited by central device capacity</li>
+              <li><strong>More Complex Setup</strong> — More cabling required than Bus topology</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 9 — STAR REAL-LIFE + COMPARISON
+    ══════════════════════════════════════════ -->
+    <section class="slide slide-examples" id="slide-9">
+      <div class="slide-header star-header">
+        <span class="slide-label">Star Topology · Real-Life Examples</span>
+      </div>
+      <div class="slide-body">
+        <h2 class="animate-in" style="--delay:0.1s"><span class="star-accent">Star</span> Topology in Real Life</h2>
+        <div class="examples-grid">
+          <div class="example-card star-example animate-in" style="--delay:0.2s">
+            <div class="example-icon">
+              <svg viewBox="0 0 60 60" width="60" height="60">
+                <circle cx="30" cy="30" r="10" fill="#064e3b" stroke="#10b981" stroke-width="2"/>
+                <text x="30" y="34" text-anchor="middle" fill="#6ee7b7" font-size="9" font-family="Inter">📶</text>
+                <line x1="30" y1="20" x2="30" y2="8" stroke="#10b981" stroke-width="1.5"/>
+                <circle cx="30" cy="6" r="4" fill="#10b981"/>
+                <line x1="30" y1="40" x2="55" y2="52" stroke="#10b981" stroke-width="1.5"/>
+                <circle cx="57" cy="53" r="3" fill="#10b981"/>
+                <line x1="30" y1="40" x2="5" y2="52" stroke="#10b981" stroke-width="1.5"/>
+                <circle cx="3" cy="53" r="3" fill="#10b981"/>
+              </svg>
+            </div>
+            <h4>Home Wi-Fi Network</h4>
+            <p>Your home router acts as the central hub. All devices (phones, laptops, smart TVs) connect to it wirelessly — a wireless Star topology used in every modern household.</p>
+            <div class="example-tag star-tag">🏠 Home Network</div>
+          </div>
+
+          <div class="example-card star-example animate-in" style="--delay:0.3s">
+            <div class="example-icon">
+              <svg viewBox="0 0 60 60" width="60" height="60">
+                <rect x="22" y="20" width="16" height="20" rx="3" fill="#064e3b" stroke="#10b981" stroke-width="2"/>
+                <text x="30" y="33" text-anchor="middle" fill="#6ee7b7" font-size="8">SW</text>
+                <line x1="30" y1="20" x2="10" y2="8" stroke="#10b981" stroke-width="1.5"/>
+                <circle cx="8" cy="6" r="4" fill="#10b981"/>
+                <line x1="30" y1="20" x2="50" y2="8" stroke="#10b981" stroke-width="1.5"/>
+                <circle cx="52" cy="6" r="4" fill="#10b981"/>
+                <line x1="30" y1="40" x2="10" y2="52" stroke="#10b981" stroke-width="1.5"/>
+                <circle cx="8" cy="54" r="4" fill="#10b981"/>
+                <line x1="30" y1="40" x2="50" y2="52" stroke="#10b981" stroke-width="1.5"/>
+                <circle cx="52" cy="54" r="4" fill="#10b981"/>
+              </svg>
+            </div>
+            <h4>Office LAN with Central Switch</h4>
+            <p>Corporate offices wire every computer and printer back to a central switch in the server room. This is the most common LAN configuration worldwide — classic Star topology.</p>
+            <div class="example-tag star-tag">🏢 Enterprise LAN</div>
+          </div>
+
+          <div class="example-card star-example animate-in" style="--delay:0.4s">
+            <div class="example-icon">
+              <svg viewBox="0 0 60 60" width="60" height="60">
+                <rect x="20" y="22" width="20" height="16" rx="3" fill="#064e3b" stroke="#10b981" stroke-width="2"/>
+                <text x="30" y="33" text-anchor="middle" fill="#6ee7b7" font-size="7">BST</text>
+                <line x1="30" y1="22" x2="10" y2="10" stroke="#10b981" stroke-width="1.5"/>
+                <rect x="4" y="4" width="10" height="10" rx="2" fill="#10b981"/>
+                <line x1="30" y1="22" x2="50" y2="10" stroke="#10b981" stroke-width="1.5"/>
+                <rect x="46" y="4" width="10" height="10" rx="2" fill="#10b981"/>
+                <line x1="30" y1="38" x2="10" y2="52" stroke="#10b981" stroke-width="1.5"/>
+                <rect x="4" y="48" width="10" height="10" rx="2" fill="#10b981"/>
+              </svg>
+            </div>
+            <h4>Cellular Base Station Networks</h4>
+            <p>Mobile towers act as central hubs; your phone connects to the nearest tower. The tower connects back to a central base station controller — a Star topology at telecom scale.</p>
+            <div class="example-tag star-tag">📡 Telecommunications</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 10 — COMPARISON + CONCLUSION
+    ══════════════════════════════════════════ -->
+    <section class="slide slide-compare" id="slide-10">
+      <div class="slide-header">
+        <span class="slide-label">Comparison &amp; Conclusion</span>
+      </div>
+      <div class="slide-body">
+        <h2 class="animate-in" style="--delay:0.1s">Bus vs Star — Side-by-Side</h2>
+        <div class="comparison-table animate-in" style="--delay:0.2s">
+          <table>
+            <thead>
+              <tr>
+                <th>Attribute</th>
+                <th class="bus-col">🚌 Bus Topology</th>
+                <th class="star-col">⭐ Star Topology</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cost</td>
+                <td class="bus-col">✅ Low (less cable)</td>
+                <td class="star-col">⚠️ Higher (more cable + switch)</td>
+              </tr>
+              <tr>
+                <td>Fault Tolerance</td>
+                <td class="bus-col">❌ Poor (cable break = all down)</td>
+                <td class="star-col">✅ Good (one device failure isolated)</td>
+              </tr>
+              <tr>
+                <td>Scalability</td>
+                <td class="bus-col">❌ Low (limited devices)</td>
+                <td class="star-col">✅ High (easy to expand)</td>
+              </tr>
+              <tr>
+                <td>Performance</td>
+                <td class="bus-col">⚠️ Degrades with traffic</td>
+                <td class="star-col">✅ Consistent (dedicated lines)</td>
+              </tr>
+              <tr>
+                <td>Troubleshooting</td>
+                <td class="bus-col">❌ Difficult (shared cable)</td>
+                <td class="star-col">✅ Easy (isolate by device)</td>
+              </tr>
+              <tr>
+                <td>Modern Usage</td>
+                <td class="bus-col">⚠️ Legacy / Industrial (CAN bus)</td>
+                <td class="star-col">✅ Dominant standard today</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="conclusion animate-in" style="--delay:0.35s">
+          <h3>🎯 Key Takeaways</h3>
+          <ul>
+            <li>Bus topology is <strong>cheap and simple</strong> but fragile — best for legacy or embedded systems</li>
+            <li>Star topology is <strong>reliable, scalable &amp; manageable</strong> — the standard for modern networks</li>
+            <li>Choosing the right topology depends on <strong>cost, scale, and reliability needs</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end .presentation -->
+
+  <!-- NAVIGATION BUTTONS -->
+  <div class="nav-controls">
+    <button class="nav-btn" id="prevBtn" aria-label="Previous slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="nav-btn" id="nextBtn" aria-label="Next slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

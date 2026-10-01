@@ -1,0 +1,2206 @@
+
+/* =========================================================
+   NETWORK TOPOLOGIES PRESENTATION
+   FULLY RESPONSIVE style.css
+========================================================= */
+
+:root {
+  --bg: #080b18;
+  --bg-light: #0f1326;
+  --panel: #11162d;
+  --panel-light: #171d3b;
+
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --primary-soft: #a5b4fc;
+
+  --bus: #f59e0b;
+  --bus-light: #fbbf24;
+
+  --star: #10b981;
+  --star-light: #34d399;
+
+  --text: #f8fafc;
+  --text-soft: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --danger: #ef4444;
+  --border: rgba(148, 163, 184, 0.15);
+
+  --radius: 16px;
+  --transition: 0.3s ease;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(99, 102, 241, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(16, 185, 129, 0.08),
+      transparent 30%
+    ),
+    var(--bg);
+
+  color: var(--text);
+
+  font-family: "Inter", sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================================
+   PRESENTATION
+========================================================= */
+
+.presentation {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  min-width: 0;
+  min-height: 0;
+}
+
+/* =========================================================
+   SLIDES
+========================================================= */
+
+.slide {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  padding: clamp(55px, 7vh, 90px)
+    clamp(22px, 8vw, 120px)
+    clamp(75px, 10vh, 100px);
+
+  display: none;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateX(40px);
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(99, 102, 241, 0.07),
+      transparent 35%
+    );
+}
+
+.slide.active {
+  display: flex;
+
+  opacity: 1;
+
+  transform: translateX(0);
+
+  z-index: 5;
+}
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.progress-bar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 10%;
+  height: 4px;
+
+  z-index: 1000;
+
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--star)
+  );
+
+  box-shadow:
+    0 0 15px rgba(99, 102, 241, 0.6);
+
+  transition: width 0.4s ease;
+}
+
+/* =========================================================
+   SLIDE COUNTER
+========================================================= */
+
+.slide-counter {
+  position: fixed;
+
+  top: 22px;
+  right: 30px;
+
+  z-index: 1000;
+
+  padding: 8px 14px;
+
+  border: 1px solid var(--border);
+  border-radius: 30px;
+
+  background: rgba(15, 19, 38, 0.75);
+
+  color: var(--text-muted);
+
+  font-family: "Fira Code", monospace;
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  backdrop-filter: blur(10px);
+}
+
+/* =========================================================
+   SLIDE HEADER
+========================================================= */
+
+.slide-header {
+  position: relative;
+
+  width: 100%;
+
+  margin-bottom: clamp(18px, 3vh, 30px);
+
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.slide-label {
+  position: relative;
+
+  padding-left: 16px;
+
+  color: var(--primary-light);
+
+  font-size: clamp(11px, 1.1vw, 13px);
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+.slide-label::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 4px;
+  height: 20px;
+
+  transform: translateY(-50%);
+
+  border-radius: 10px;
+
+  background: var(--primary);
+}
+
+.bus-header .slide-label {
+  color: var(--bus-light);
+}
+
+.bus-header .slide-label::before {
+  background: var(--bus);
+}
+
+.star-header .slide-label {
+  color: var(--star-light);
+}
+
+.star-header .slide-label::before {
+  background: var(--star);
+}
+
+/* =========================================================
+   SLIDE BODY
+========================================================= */
+
+.slide-body {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1250px;
+
+  margin: auto;
+
+  min-width: 0;
+}
+
+/* Prevent content from becoming wider than screen */
+.slide-body > * {
+  max-width: 100%;
+}
+
+.slide-body h2 {
+  margin-bottom: clamp(20px, 3vh, 35px);
+
+  font-size: clamp(30px, 4vw, 58px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+
+  overflow-wrap: break-word;
+}
+
+.slide-body p {
+  color: var(--text-soft);
+
+  font-size: clamp(14px, 1.3vw, 16px);
+
+  line-height: 1.8;
+
+  overflow-wrap: break-word;
+}
+
+/* =========================================================
+   TWO COLUMN
+========================================================= */
+
+.two-col {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+
+  gap: clamp(30px, 5vw, 70px);
+
+  align-items: center;
+}
+
+.col-text {
+  width: 100%;
+  max-width: 570px;
+}
+
+.col-visual {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================
+   ACCENTS
+========================================================= */
+
+.accent {
+  color: var(--primary-light);
+
+  background: linear-gradient(
+    90deg,
+    #818cf8,
+    #c4b5fd
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bus-accent {
+  color: var(--bus);
+}
+
+.star-accent {
+  color: var(--star);
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+.animate-in {
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  animation:
+    slideIn 0.7s ease forwards;
+
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   TITLE SLIDE
+========================================================= */
+
+.slide-title {
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: clamp(30px, 5vw, 80px);
+
+  padding-left: clamp(30px, 10vw, 150px);
+  padding-right: clamp(30px, 10vw, 150px);
+}
+
+.slide-bg-grid {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.18;
+
+  background-image:
+    linear-gradient(
+      rgba(99, 102, 241, 0.15) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(99, 102, 241, 0.15) 1px,
+      transparent 1px
+    );
+
+  background-size: 45px 45px;
+
+  mask-image: linear-gradient(
+    to bottom right,
+    black,
+    transparent 75%
+  );
+}
+
+.title-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 650px;
+}
+
+.badge {
+  display: inline-block;
+
+  margin-bottom: clamp(18px, 3vh, 25px);
+
+  padding: 8px 15px;
+
+  border: 1px solid rgba(129, 140, 248, 0.35);
+  border-radius: 30px;
+
+  color: var(--primary-soft);
+
+  background: rgba(99, 102, 241, 0.08);
+
+  font-size: clamp(10px, 1vw, 12px);
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+}
+
+.title-content h1 {
+  margin-bottom: clamp(20px, 3vh, 30px);
+
+  font-size: clamp(48px, 8vw, 105px);
+
+  line-height: 0.9;
+
+  letter-spacing: clamp(-6px, -0.4vw, -3px);
+
+  overflow-wrap: break-word;
+}
+
+.subtitle {
+  color: var(--text-soft);
+
+  font-size: clamp(15px, 2vw, 22px);
+
+  line-height: 1.6;
+}
+
+.divider {
+  width: 80px;
+  height: 3px;
+
+  margin: 25px 0;
+
+  background: var(--primary);
+
+  border-radius: 10px;
+}
+
+.meta {
+  color: var(--text-muted);
+
+  font-family: "Fira Code", monospace;
+
+  font-size: 12px;
+}
+
+.nav-hint {
+  margin-top: clamp(25px, 5vh, 50px);
+
+  display: flex;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  color: var(--text-muted);
+
+  font-size: 13px;
+}
+
+kbd {
+  padding: 5px 9px;
+
+  border: 1px solid var(--border);
+  border-bottom-width: 3px;
+
+  border-radius: 6px;
+
+  color: var(--text-soft);
+
+  background: var(--panel);
+
+  font-family: "Fira Code", monospace;
+}
+
+.title-visual {
+  position: relative;
+
+  width: clamp(220px, 30vw, 350px);
+  height: clamp(220px, 30vw, 350px);
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-svg {
+  width: 100%;
+  height: 100%;
+
+  filter:
+    drop-shadow(
+      0 0 30px rgba(99, 102, 241, 0.2)
+    );
+}
+
+.hero-nodes circle {
+  transition: 0.3s ease;
+}
+
+.hero-nodes circle:hover {
+  fill: #312e81;
+  stroke: white;
+}
+
+/* =========================================================
+   AGENDA
+========================================================= */
+
+.slide-agenda {
+  justify-content: center;
+}
+
+.agenda-grid {
+  width: 100%;
+  max-width: 900px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin: auto;
+}
+
+.agenda-card {
+  min-height: 100px;
+
+  padding: 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(23, 29, 59, 0.9),
+      rgba(15, 19, 38, 0.8)
+    );
+
+  transition: var(--transition);
+}
+
+.agenda-card:hover {
+  transform: translateY(-5px);
+
+  border-color:
+    rgba(129, 140, 248, 0.4);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.agenda-card:last-child {
+  grid-column: span 2;
+}
+
+.agenda-num {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  color: white;
+
+  background: var(--primary);
+
+  font-family: "Fira Code", monospace;
+
+  font-weight: 600;
+}
+
+.agenda-num.bus {
+  background: var(--bus);
+  color: #111827;
+}
+
+.agenda-num.star {
+  background: var(--star);
+}
+
+.agenda-num.compare {
+  background: #8b5cf6;
+}
+
+.agenda-num.conclude {
+  background: #ec4899;
+}
+
+.agenda-card strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: clamp(14px, 1.4vw, 16px);
+}
+
+.agenda-card p {
+  color: var(--text-muted);
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.feature-list {
+  list-style: none;
+
+  margin-top: 30px;
+}
+
+.feature-list li {
+  margin: 15px 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  color: var(--text-soft);
+
+  font-size: 14px;
+}
+
+.feature-list .icon {
+  width: 30px;
+
+  flex-shrink: 0;
+}
+
+.topology-types {
+  width: min(330px, 100%);
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.ttype {
+  padding: 17px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  text-align: center;
+
+  color: var(--text-soft);
+
+  background: var(--panel);
+
+  transition: var(--transition);
+}
+
+.ttype:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--primary);
+}
+
+.active-type {
+  border-color: var(--primary);
+
+  color: white;
+
+  background:
+    rgba(99, 102, 241, 0.15);
+
+  box-shadow:
+    0 0 25px rgba(99, 102, 241, 0.15);
+}
+
+.muted {
+  opacity: 0.45;
+}
+
+.type-note {
+  margin-top: 20px;
+
+  color: var(--text-muted) !important;
+
+  font-size: 13px !important;
+}
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+
+.info-box {
+  margin-top: 30px;
+
+  padding: 20px;
+
+  border-left: 3px solid var(--bus);
+
+  border-radius: 10px;
+
+  background:
+    rgba(245, 158, 11, 0.06);
+}
+
+.info-box .info-item {
+  margin: 8px 0;
+
+  color: var(--text-muted);
+
+  font-size: 13px;
+}
+
+.info-box .label {
+  color: var(--bus-light);
+
+  font-weight: 700;
+}
+
+.star-info {
+  border-left-color: var(--star);
+
+  background:
+    rgba(16, 185, 129, 0.06);
+}
+
+.star-info .label {
+  color: var(--star-light);
+}
+
+/* =========================================================
+   DIAGRAMS
+========================================================= */
+
+.diagram-container {
+  width: 100%;
+  max-width: 100%;
+
+  padding: clamp(10px, 2vw, 20px);
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(99, 102, 241, 0.08),
+      transparent 70%
+    );
+}
+
+.topology-svg {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+
+  overflow: visible;
+}
+
+.bus-node,
+.star-node,
+.star-hub {
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.bus-node:hover .node-rect {
+  stroke: white;
+
+  filter:
+    drop-shadow(
+      0 0 8px rgba(99, 102, 241, 0.8)
+    );
+}
+
+.star-node:hover .snode-circle {
+  stroke: white;
+
+  filter:
+    drop-shadow(
+      0 0 8px rgba(16, 185, 129, 0.8)
+    );
+}
+
+.star-hub:hover circle {
+  filter:
+    drop-shadow(
+      0 0 15px rgba(16, 185, 129, 0.8)
+    );
+}
+
+.diagram-caption {
+  margin-top: 12px;
+
+  text-align: center;
+
+  color: var(--text-muted) !important;
+
+  font-size: 11px !important;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   BUS SIGNAL
+========================================================= */
+
+.signal-pulse {
+  filter:
+    drop-shadow(
+      0 0 6px rgba(165, 180, 252, 0.9)
+    );
+}
+
+/* =========================================================
+   PROS / CONS
+========================================================= */
+
+.pros-cons-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 25px;
+}
+
+.pros-col,
+.cons-col {
+  min-width: 0;
+
+  padding: clamp(20px, 3vw, 30px);
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  background: var(--panel);
+
+  transition: var(--transition);
+}
+
+.pros-col:hover,
+.cons-col:hover {
+  transform: translateY(-4px);
+}
+
+.pros-col {
+  border-top: 3px solid var(--star);
+}
+
+.cons-col {
+  border-top: 3px solid var(--danger);
+}
+
+.pros-title,
+.cons-title {
+  margin-bottom: 25px;
+
+  font-size: 19px;
+}
+
+.pros-title {
+  color: var(--star-light);
+}
+
+.cons-title {
+  color: #f87171;
+}
+
+.pros-list,
+.cons-list {
+  list-style: none;
+}
+
+.pros-list li,
+.cons-list li {
+  position: relative;
+
+  padding-left: 22px;
+
+  margin: 17px 0;
+
+  color: var(--text-soft);
+
+  font-size: 14px;
+
+  line-height: 1.65;
+}
+
+.pros-list li::before {
+  content: "✓";
+
+  position: absolute;
+
+  left: 0;
+
+  color: var(--star);
+
+  font-weight: bold;
+}
+
+.cons-list li::before {
+  content: "×";
+
+  position: absolute;
+
+  left: 0;
+
+  color: var(--danger);
+
+  font-weight: bold;
+}
+
+.pros-list strong,
+.cons-list strong {
+  color: white;
+}
+
+/* =========================================================
+   EXAMPLES
+========================================================= */
+
+.examples-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+.example-card {
+  min-width: 0;
+  min-height: 310px;
+
+  padding: clamp(20px, 2.5vw, 28px);
+
+  display: flex;
+
+  flex-direction: column;
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30, 27, 75, 0.7),
+      rgba(15, 19, 38, 0.9)
+    );
+
+  transition: var(--transition);
+}
+
+.example-card:hover {
+  transform: translateY(-7px);
+
+  border-color:
+    rgba(99, 102, 241, 0.5);
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.example-icon {
+  width: 65px;
+  height: 65px;
+
+  flex-shrink: 0;
+
+  margin-bottom: 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background:
+    rgba(99, 102, 241, 0.1);
+}
+
+.example-card h4 {
+  margin-bottom: 12px;
+
+  font-size: 17px;
+}
+
+.example-card p {
+  color: var(--text-muted);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+.example-tag {
+  align-self: flex-start;
+
+  margin-top: auto;
+
+  padding: 7px 11px;
+
+  border-radius: 20px;
+
+  color: var(--primary-soft);
+
+  background:
+    rgba(99, 102, 241, 0.1);
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+.star-example {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(6, 78, 59, 0.35),
+      rgba(15, 19, 38, 0.9)
+    );
+}
+
+.star-example:hover {
+  border-color:
+    rgba(16, 185, 129, 0.5);
+}
+
+.star-tag {
+  color: var(--star-light);
+
+  background:
+    rgba(16, 185, 129, 0.1);
+}
+
+/* =========================================================
+   COMPARISON
+========================================================= */
+
+.slide-compare .slide-body {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.comparison-table {
+  width: 100%;
+
+  max-width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid var(--border);
+  border-radius: 15px;
+
+  background: var(--panel);
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.comparison-table table {
+  width: 100%;
+
+  min-width: 650px;
+
+  border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 14px 18px;
+
+  border-bottom: 1px solid var(--border);
+
+  text-align: left;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+.comparison-table th {
+  color: white;
+
+  background: var(--panel-light);
+
+  font-size: 13px;
+}
+
+.comparison-table td:first-child {
+  color: white;
+
+  font-weight: 600;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.bus-col {
+  color: #fcd34d;
+}
+
+.star-col {
+  color: #6ee7b7;
+}
+
+.comparison-table tbody tr {
+  transition: 0.2s ease;
+}
+
+.comparison-table tbody tr:hover {
+  background:
+    rgba(99, 102, 241, 0.05);
+}
+
+/* =========================================================
+   CONCLUSION
+========================================================= */
+
+.conclusion {
+  margin-top: 20px;
+
+  padding: 20px 25px;
+
+  border-left: 3px solid var(--primary);
+
+  border-radius: 10px;
+
+  background:
+    rgba(99, 102, 241, 0.07);
+}
+
+.conclusion h3 {
+  margin-bottom: 12px;
+
+  color: var(--primary-light);
+
+  font-size: 16px;
+}
+
+.conclusion ul {
+  padding-left: 20px;
+}
+
+.conclusion li {
+  margin: 7px 0;
+
+  color: var(--text-soft);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+.conclusion strong {
+  color: white;
+}
+
+/* =========================================================
+   NAVIGATION BUTTONS
+========================================================= */
+
+.nav-controls {
+  position: fixed;
+
+  right: 30px;
+  bottom: 25px;
+
+  z-index: 1000;
+
+  display: flex;
+
+  gap: 10px;
+}
+
+.nav-btn {
+  width: 45px;
+  height: 45px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  color: var(--text-soft);
+
+  background:
+    rgba(17, 22, 45, 0.9);
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+
+  transition: var(--transition);
+
+  touch-action: manipulation;
+}
+
+.nav-btn:hover {
+  color: white;
+
+  border-color: var(--primary);
+
+  background: var(--primary);
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 20px rgba(99, 102, 241, 0.3);
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+/* =========================================================
+   TOOLTIP
+========================================================= */
+
+#busTooltip,
+#starTooltip {
+  pointer-events: none;
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+  color: white;
+
+  background: var(--primary);
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #373b66;
+
+  border-radius: 10px;
+}
+
+/* =========================================================
+   LARGE LAPTOP / DESKTOP
+   1200px - 1600px
+========================================================= */
+
+@media (max-width: 1400px) {
+
+  .slide {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
+  .slide-title {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+
+  .two-col {
+    gap: 45px;
+  }
+
+  .slide-body {
+    max-width: 1150px;
+  }
+}
+
+/* =========================================================
+   LAPTOP
+   1001px - 1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .slide {
+    padding:
+      60px
+      5%
+      80px;
+  }
+
+  .slide-title {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  .title-content h1 {
+    font-size: clamp(60px, 7vw, 85px);
+  }
+
+  .title-visual {
+    width: 280px;
+    height: 280px;
+  }
+
+  .two-col {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap: 35px;
+  }
+
+  .examples-grid {
+    gap: 16px;
+  }
+
+  .example-card {
+    min-height: 280px;
+  }
+}
+
+/* =========================================================
+   TABLET LANDSCAPE
+   769px - 1000px
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .slide {
+    padding:
+      55px
+      4.5%
+      80px;
+  }
+
+  .slide-title {
+    padding-left: 5%;
+    padding-right: 5%;
+
+    gap: 30px;
+  }
+
+  .title-content h1 {
+    font-size: clamp(55px, 7vw, 72px);
+  }
+
+  .title-visual {
+    width: 250px;
+    height: 250px;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+  .col-text {
+    max-width: 800px;
+  }
+
+  .col-visual {
+    max-width: 800px;
+
+    margin: 0 auto;
+  }
+
+  .examples-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .example-card:last-child {
+    grid-column: span 2;
+  }
+
+  .agenda-grid {
+    max-width: 800px;
+  }
+
+  .pros-cons-grid {
+    gap: 18px;
+  }
+}
+
+/* =========================================================
+   TABLET PORTRAIT
+   601px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow: hidden;
+  }
+
+  .slide {
+    padding:
+      60px
+      28px
+      85px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    justify-content: flex-start;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .slide.active {
+    overflow-y: auto;
+  }
+
+  .slide-counter {
+    top: 15px;
+    right: 18px;
+
+    padding: 7px 11px;
+
+    font-size: 11px;
+  }
+
+  .slide-header {
+    margin-bottom: 22px;
+  }
+
+  .slide-body {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .slide-body h2 {
+    font-size: clamp(32px, 7vw, 45px);
+
+    letter-spacing: -1.5px;
+  }
+
+  .slide-title {
+    min-height: 100%;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    gap: 30px;
+
+    padding:
+      70px
+      28px
+      90px;
+  }
+
+  .title-content {
+    max-width: 100%;
+  }
+
+  .title-content h1 {
+    font-size: clamp(55px, 12vw, 80px);
+
+    letter-spacing: -4px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .title-visual {
+    width: 220px;
+    height: 220px;
+
+    align-self: center;
+  }
+
+  .agenda-grid {
+    width: 100%;
+
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .agenda-card {
+    min-height: 85px;
+
+    padding: 17px;
+
+    gap: 15px;
+  }
+
+  .agenda-card:last-child {
+    grid-column: auto;
+  }
+
+  .agenda-num {
+    width: 43px;
+    height: 43px;
+  }
+
+  .pros-cons-grid {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .pros-col,
+  .cons-col {
+    padding: 22px;
+  }
+
+  .examples-grid {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .example-card:last-child {
+    grid-column: auto;
+  }
+
+  .example-card {
+    min-height: 250px;
+  }
+
+  .topology-types {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .diagram-container {
+    padding: 10px;
+  }
+
+  .comparison-table {
+    border-radius: 12px;
+  }
+
+  .comparison-table table {
+    min-width: 620px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 12px 14px;
+
+    font-size: 12px;
+  }
+
+  .conclusion {
+    padding: 18px 20px;
+  }
+
+  .nav-controls {
+    right: 18px;
+    bottom: 18px;
+
+    gap: 8px;
+  }
+
+  .nav-btn {
+    width: 43px;
+    height: 43px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   431px - 600px
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .slide {
+    padding:
+      55px
+      20px
+      80px;
+  }
+
+  .slide-title {
+    padding:
+      65px
+      20px
+      85px;
+  }
+
+  .slide-title .title-visual {
+    display: none;
+  }
+
+  .title-content h1 {
+    font-size: clamp(48px, 14vw, 68px);
+
+    line-height: 0.92;
+
+    letter-spacing: -3px;
+  }
+
+  .badge {
+    padding: 7px 11px;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+
+    line-height: 1.6;
+  }
+
+  .divider {
+    width: 60px;
+
+    margin: 20px 0;
+  }
+
+  .meta {
+    font-size: 10px;
+  }
+
+  .nav-hint {
+    margin-top: 25px;
+
+    font-size: 11px;
+  }
+
+  .slide-header {
+    margin-bottom: 18px;
+  }
+
+  .slide-label {
+    padding-left: 12px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .slide-label::before {
+    width: 3px;
+    height: 17px;
+  }
+
+  .slide-body h2 {
+    font-size: clamp(29px, 9vw, 38px);
+
+    margin-bottom: 20px;
+  }
+
+  .slide-body p {
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+  .two-col {
+    gap: 25px;
+  }
+
+  .feature-list {
+    margin-top: 20px;
+  }
+
+  .feature-list li {
+    margin: 12px 0;
+
+    align-items: flex-start;
+
+    font-size: 13px;
+  }
+
+  .feature-list .icon {
+    width: 25px;
+  }
+
+  .topology-types {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+  .ttype {
+    padding: 13px 8px;
+
+    font-size: 12px;
+  }
+
+  .info-box {
+    margin-top: 20px;
+
+    padding: 15px;
+  }
+
+  .info-box .info-item {
+    font-size: 12px;
+  }
+
+  .agenda-card {
+    padding: 14px;
+
+    gap: 12px;
+  }
+
+  .agenda-num {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+  }
+
+  .agenda-card strong {
+    font-size: 14px;
+  }
+
+  .agenda-card p {
+    font-size: 11px;
+
+    line-height: 1.5;
+  }
+
+  .pros-col,
+  .cons-col {
+    padding: 18px;
+  }
+
+  .pros-title,
+  .cons-title {
+    margin-bottom: 18px;
+
+    font-size: 17px;
+  }
+
+  .pros-list li,
+  .cons-list li {
+    margin: 13px 0;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+  }
+
+  .example-card {
+    min-height: 230px;
+
+    padding: 20px;
+  }
+
+  .example-icon {
+    width: 55px;
+    height: 55px;
+
+    margin-bottom: 15px;
+  }
+
+  .example-card h4 {
+    font-size: 15px;
+  }
+
+  .example-card p {
+    font-size: 12px;
+  }
+
+  .example-tag {
+    font-size: 10px;
+  }
+
+  .diagram-container {
+    padding: 7px;
+
+    border-radius: 12px;
+  }
+
+  .diagram-caption {
+    font-size: 10px !important;
+  }
+
+  .comparison-table table {
+    min-width: 580px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 10px 12px;
+
+    font-size: 11px;
+  }
+
+  .conclusion {
+    margin-top: 15px;
+
+    padding: 15px 17px;
+  }
+
+  .conclusion h3 {
+    font-size: 14px;
+  }
+
+  .conclusion li {
+    font-size: 11px;
+  }
+
+  .nav-controls {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   430px AND BELOW
+========================================================= */
+
+@media (max-width: 430px) {
+
+  .slide {
+    padding:
+      52px
+      16px
+      75px;
+  }
+
+  .slide-title {
+    padding:
+      60px
+      16px
+      80px;
+  }
+
+  .slide-counter {
+    top: 12px;
+    right: 12px;
+
+    padding: 6px 9px;
+
+    font-size: 10px;
+  }
+
+  .title-content h1 {
+    font-size: clamp(42px, 14vw, 55px);
+
+    letter-spacing: -2.5px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .badge {
+    margin-bottom: 15px;
+
+    font-size: 8px;
+  }
+
+  .nav-hint {
+    font-size: 10px;
+  }
+
+  .slide-body h2 {
+    font-size: 28px;
+
+    letter-spacing: -1px;
+  }
+
+  .slide-body p {
+    font-size: 13px;
+  }
+
+  .topology-types {
+    gap: 7px;
+  }
+
+  .ttype {
+    padding: 11px 5px;
+
+    font-size: 11px;
+  }
+
+  .agenda-card {
+    padding: 12px;
+
+    gap: 10px;
+  }
+
+  .agenda-num {
+    width: 35px;
+    height: 35px;
+
+    font-size: 10px;
+  }
+
+  .agenda-card strong {
+    font-size: 13px;
+  }
+
+  .agenda-card p {
+    font-size: 10px;
+  }
+
+  .pros-col,
+  .cons-col {
+    padding: 16px;
+  }
+
+  .pros-list li,
+  .cons-list li {
+    padding-left: 19px;
+
+    font-size: 11px;
+  }
+
+  .example-card {
+    min-height: 215px;
+
+    padding: 17px;
+  }
+
+  .example-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .example-card h4 {
+    font-size: 14px;
+  }
+
+  .example-card p {
+    font-size: 11px;
+  }
+
+  .comparison-table table {
+    min-width: 540px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 9px 10px;
+
+    font-size: 10px;
+  }
+
+  .conclusion {
+    padding: 13px 15px;
+  }
+
+  .conclusion h3 {
+    font-size: 13px;
+  }
+
+  .conclusion li {
+    font-size: 10px;
+  }
+
+  .nav-controls {
+    right: 10px;
+    bottom: 10px;
+
+    gap: 6px;
+  }
+
+  .nav-btn {
+    width: 37px;
+    height: 37px;
+  }
+}
+
+/* =========================================================
+   SHORT HEIGHT SCREENS
+   Helps laptops with small vertical resolution
+========================================================= */
+
+@media (max-height: 700px) and (min-width: 769px) {
+
+  .slide {
+    padding-top: 45px;
+    padding-bottom: 65px;
+  }
+
+  .slide-header {
+    margin-bottom: 15px;
+  }
+
+  .slide-body h2 {
+    margin-bottom: 20px;
+  }
+
+  .agenda-card {
+    min-height: 75px;
+
+    padding: 15px;
+  }
+
+  .example-card {
+    min-height: 240px;
+
+    padding: 20px;
+  }
+
+  .nav-controls {
+    bottom: 15px;
+  }
+}
+
+/* =========================================================
+   SHORT MOBILE SCREENS
+========================================================= */
+
+@media (max-width: 600px) and (max-height: 650px) {
+
+  .slide {
+    padding-top: 45px;
+    padding-bottom: 65px;
+  }
+
+  .slide-title {
+    padding-top: 50px;
+    padding-bottom: 70px;
+  }
+
+  .title-content h1 {
+    font-size: 44px;
+  }
+
+  .nav-hint {
+    margin-top: 15px;
+  }
+
+  .slide-header {
+    margin-bottom: 12px;
+  }
+
+  .slide-body h2 {
+    margin-bottom: 15px;
+  }
+
+  .agenda-card {
+    min-height: 65px;
+  }
+
+  .example-card {
+    min-height: 190px;
+  }
+
+  .nav-controls {
+    bottom: 8px;
+  }
+}
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .agenda-card:hover,
+  .example-card:hover,
+  .pros-col:hover,
+  .cons-col:hover {
+    transform: none;
+  }
+
+  .nav-btn:hover {
+    transform: none;
+  }
+
+  .ttype:hover {
+    transform: none;
+  }
+
+  .bus-node:hover .node-rect,
+  .star-node:hover .snode-circle,
+  .star-hub:hover circle {
+    filter: none;
+  }
+}
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}
