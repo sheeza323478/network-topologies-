@@ -507,6 +507,236 @@ button {
   font-size: 12px;
 }
 
+/* =========================================================
+   PRESENTATION DETAILS (Title Slide) — SEPARATE BOXES
+========================================================= */
+
+.book-detail-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 18px 0 10px;
+  padding: 16px 20px;
+  border: 1px solid rgba(129, 140, 248, 0.25);
+  border-left: 4px solid var(--primary);
+  border-radius: 12px;
+  background: rgba(99, 102, 241, 0.07);
+}
+
+.book-icon {
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.book-title-main {
+  font-size: clamp(18px, 2.2vw, 28px) !important;
+  font-weight: 700 !important;
+  color: white !important;
+  line-height: 1.3 !important;
+  margin: 0 0 4px !important;
+}
+
+.book-author-name {
+  font-size: clamp(12px, 1.1vw, 14px) !important;
+  color: var(--primary-soft) !important;
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.presenter-detail-box {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 20px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-left: 4px solid var(--star);
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.presenter-label-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--star-light);
+}
+
+.presenter-name-text {
+  font-size: clamp(12px, 1.2vw, 15px);
+  font-weight: 700;
+  color: white;
+}
+
+.presenter-info-sub {
+  font-size: clamp(10px, 1vw, 12px);
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   SLIDE 11 — ANY QUESTIONS
+========================================================= */
+
+.slide-questions {
+  align-items: center;
+  justify-content: center;
+}
+
+.questions-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 750px;
+  width: 100%;
+  margin: auto;
+}
+
+.questions-content h2 {
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -3px;
+  margin: 20px 0 0;
+}
+
+.questions-content .subtitle {
+  margin-top: 10px;
+  font-size: clamp(15px, 1.8vw, 20px);
+}
+
+.questions-content .divider {
+  margin: 24px auto;
+}
+
+.questions-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 35px;
+}
+
+.q-icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 28px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  font-size: 32px;
+  transition: var(--transition);
+}
+
+.q-icon-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-light);
+}
+
+.q-icon-card small {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.q-vs {
+  font-size: 14px !important;
+  font-weight: 800;
+  padding: 14px 16px;
+  color: var(--text-muted);
+  border-style: dashed;
+  background: transparent;
+}
+
+/* =========================================================
+   SLIDE 12 — THANK YOU
+========================================================= */
+
+.slide-thankyou {
+  align-items: center;
+  justify-content: center;
+}
+
+.thankyou-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 780px;
+  width: 100%;
+  margin: auto;
+}
+
+.thankyou-content h2 {
+  font-size: clamp(52px, 9vw, 110px);
+  line-height: 0.92;
+  letter-spacing: -4px;
+  margin: 20px 0 0;
+}
+
+.thankyou-content .subtitle {
+  margin-top: 10px;
+  font-size: clamp(14px, 1.6vw, 18px);
+  color: var(--text-muted);
+}
+
+.thankyou-content .divider {
+  margin: 24px auto;
+}
+
+.thankyou-card {
+  margin-top: 30px;
+  padding: 22px 28px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--panel);
+  text-align: left;
+}
+
+.ty-book-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(12px, 1.2vw, 14px);
+  color: var(--text-soft);
+}
+
+.ty-book-row span:first-child {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.ty-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 0;
+}
+
+.ty-presenter-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ty-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--star-light);
+}
+
+.ty-name {
+  font-size: clamp(16px, 1.8vw, 22px);
+  font-weight: 700;
+  color: white;
+}
+
+.ty-sub {
+  font-size: clamp(11px, 1vw, 13px);
+  color: var(--text-muted);
+}
+
 .nav-hint {
   margin-top: clamp(25px, 5vh, 50px);
 
